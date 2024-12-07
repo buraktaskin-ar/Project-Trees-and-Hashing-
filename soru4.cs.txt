@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace soru4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = { 65, 24, 13, 21, 11, 3, 57, 8, 43, 33 };
+
+            Console.WriteLine("Sıralanmamış Dizi:");
+            PrintArray(numbers);
+
+            // Selection Sort'u uygula
+            SelectionSort(numbers);
+
+            Console.WriteLine("\nSıralanmış Dizi:");
+            PrintArray(numbers);
+
+        }
+
+        static void SelectionSort(int[] arr)
+        {
+            int n = arr.Length;
+
+            for (int i = 0; i < n - 1; i++)
+            {
+                // Minimum elemanın indisini bul
+                int minIndex = i;
+                for (int j = i + 1; j < n; j++)
+                {
+                    if (arr[j] < arr[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+
+                // Minimum elemanı bulunan ile değiştir
+                Swap(arr, i, minIndex);
+
+                // Turun sonucunu yazdır
+                Console.WriteLine($"Tur {i + 1}: {string.Join(", ", arr)}");
+            }
+        }
+
+        static void Swap(int[] arr, int index1, int index2)
+        {
+            int temp = arr[index1];
+            arr[index1] = arr[index2];
+            arr[index2] = temp;
+        }
+
+        static void PrintArray(int[] arr)
+        {
+            Console.WriteLine(string.Join(", ", arr));
+        }
+    }
+}
+
